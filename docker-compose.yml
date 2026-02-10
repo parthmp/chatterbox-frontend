@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: docker.dev/Dockerfile
+    image: chatterbox-frontend:1.0
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - chatterbox_net
+
+networks:
+  chatterbox_net:
+    driver: bridge
