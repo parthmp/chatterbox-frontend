@@ -1,15 +1,16 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Login from './views/Login'
+import Dashboard from './views/Dashboard'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        {children}
-		<div>page content here</div>
-      </main>
-    </SidebarProvider>
-  )
+export default function App(){
+
+	return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </BrowserRouter>
+    )
+
 }
