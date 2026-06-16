@@ -1,5 +1,15 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import PrimeVue from 'primevue/config';
+import Aura from '@primeuix/themes/aura';
 
-createApp(App).mount('#app')
+import './style.css';
+import App from './App.vue';
+
+const app = createApp(App);
+app.use(PrimeVue, {
+    theme: {
+        preset: Aura
+    },
+	ripple: true
+});
+app.mount('#app');
