@@ -1,1 +1,6 @@
 @import "tailwindcss";
+@import 'primeicons/primeicons.css';
+@import "tailwindcss-primeui"; /* Optional official plugin */
+
+/* Ensures Tailwind's dark: prefix aligns with the .dark class */
+@custom-variant dark (&:where(.dark, .dark *));

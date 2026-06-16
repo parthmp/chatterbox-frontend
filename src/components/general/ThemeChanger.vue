@@ -1,0 +1,42 @@
+<template>
+	
+	<div class="float-end p-2 z-30">
+		<p class="pi pi-moon text-2xl! cursor-pointer" v-if="data.mode === 'dark'" @click="changeTheme"></p>
+		<p class="pi pi-sun text-2xl! cursor-pointer" v-if="data.mode === 'light'" @click="changeTheme"></p>
+	</div>
+	<div class="clear-both"></div>
+
+</template>
+<script setup lang="ts">
+import { onMounted, reactive } from 'vue';
+
+
+const data = reactive<{mode : string}>({
+	mode : 'light'
+});
+
+const changeTheme = () : void => {
+	if(data.mode === 'light'){
+		data.mode = 'dark';
+	}else{
+		data.mode = 'light';
+	}
+	document.documentElement.classList.toggle('dark');
+	localStorage.setItem('theme', data.mode);
+}
+
+const initTheme = () => {
+    if(localStorage.getItem('theme') === 'dark'){
+		data.mode = 'dark';
+        document.documentElement.classList.add('dark');
+    }else{
+		data.mode = 'light';
+        document.documentElement.classList.remove('dark');
+    }
+};
+
+onMounted(() => {
+	initTheme();
+});
+
+</script>
