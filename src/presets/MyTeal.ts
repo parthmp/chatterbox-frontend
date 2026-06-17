@@ -40,7 +40,6 @@ export default {
 
     colorScheme: {
       light: {
-       
         content: {
           background: '#F8FFFB',
         },
@@ -65,7 +64,9 @@ export default {
         content: {
           background: '#151515',
         },
-      
+		surface : {
+			0 : '#E4E4E4'
+		},
         primary: {
           color:         '#2F7B8F',
           contrastColor: '#ffffff',
