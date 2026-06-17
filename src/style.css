@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @import 'primeicons/primeicons.css';
-@import "tailwindcss-primeui"; /* Optional official plugin */
 
 /* Ensures Tailwind's dark: prefix aligns with the .dark class */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.p-dark, .p-dark *));
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* style.css */
+:root {
+  --p-card-shadow: 0 4px 14px #e7e7e7 !important;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.p-dark {
+  --p-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.1) !important;
+}

@@ -21,17 +21,17 @@ const changeTheme = () : void => {
 	}else{
 		data.mode = 'light';
 	}
-	document.documentElement.classList.toggle('dark');
+	document.documentElement.classList.toggle('p-dark');
 	localStorage.setItem('theme', data.mode);
 }
 
 const initTheme = () => {
     if(localStorage.getItem('theme') === 'dark'){
 		data.mode = 'dark';
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add('p-dark');
     }else{
 		data.mode = 'light';
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove('p-dark');
     }
 };
 

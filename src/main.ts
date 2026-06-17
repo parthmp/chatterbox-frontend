@@ -1,17 +1,20 @@
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
-import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@primeuix/themes'
+import Aura from '@primeuix/themes/aura'
 import router from './routes/routes.ts';
 import './style.css';
 import App from './App.vue';
+import MyTeal from './presets/MyTeal.js'
 
 const app = createApp(App);
+const MyPreset = definePreset(Aura, MyTeal);
 
 app.use(PrimeVue, {
     theme: {
-        preset: Aura,
+        preset: MyPreset,
         options: {
-            darkModeSelector: '.dark',
+            darkModeSelector: '.p-dark',
         }
     },
     ripple: true
