@@ -9,6 +9,9 @@
 </template>
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
+import { useThemeStore } from '../../stores/useThemeStore';
+
+const store = useThemeStore();
 
 
 const data = reactive<{mode : string}>({
@@ -23,6 +26,7 @@ const changeTheme = () : void => {
 	}
 	document.documentElement.classList.toggle('p-dark');
 	localStorage.setItem('theme', data.mode);
+	store.setTheme(data.mode);
 }
 
 const initTheme = () => {
@@ -33,6 +37,7 @@ const initTheme = () => {
 		data.mode = 'light';
         document.documentElement.classList.remove('p-dark');
     }
+	store.setTheme(data.mode);
 };
 
 onMounted(() => {

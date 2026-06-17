@@ -16,3 +16,9 @@
 .p-dark {
   --p-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.1) !important;
 }
+body{
+	background: #FBFFFD !important;
+}
+.p-dark body{
+	background: #0F1010 !important;
+}
