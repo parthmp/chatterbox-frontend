@@ -6,7 +6,8 @@ import router from './routes/routes.ts';
 import './style.css';
 import App from './App.vue';
 import MyTeal from './presets/MyTeal.js'
-import { createPinia } from 'pinia'
+import { createPinia } from 'pinia';
+import ToastService from 'primevue/toastservice';
 
 const pinia = createPinia();
 
@@ -25,4 +26,5 @@ app.use(PrimeVue, {
 
 app.use(router);
 app.use(pinia);
+app.use(ToastService);
 app.mount('#app');

@@ -1,17 +1,16 @@
 import { defineStore } from 'pinia';
 
-export const useThemeStore = defineStore('alerts', {
+export const useThemeStore = defineStore('theme', {
 	state: () => ({
-		theme : ''
+		theme: localStorage.getItem('theme') || 'light'
 	}),
-	getters : {
-		getTheme : (state) => {
-			return state.theme;
-		}
+	getters: {
+		getTheme: (state) => state.theme
 	},
-	actions : {
-		setTheme(theme: string){
+	actions: {
+		setTheme(theme: string) {
 			this.theme = theme;
+			localStorage.setItem('theme', theme);
 		}
 	}
 });
