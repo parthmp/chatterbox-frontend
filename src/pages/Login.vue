@@ -95,9 +95,8 @@ const submitLogin = (event: FormSubmitEvent) : void => {
 		return ;
 	}
 
-	
-	console.log(data.token);
-	console.log(event.values);
+
 }
+
 
 </script>
