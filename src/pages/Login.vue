@@ -18,7 +18,7 @@
 								<Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{ $form.password.error?.message }}</Message>
 							</div>
 
-							<VueTurnstile ref="turnstile" :site-key="env.TURNSTILE_SITE_KEY" v-model="data.token" size="flexible" />
+							<VueTurnstile ref="turnstile" :site-key="env.TURNSTILE_SITE_KEY" v-model="data.turnstileToken" size="flexible" />
 							
 							<Button type="submit" class="w-full text-lg!" :disabled="data.loading"><span v-if="data.loading" class="pi pi-spinner animate-spin"></span><span v-if="!data.loading" class="pi pi-lock "></span>Login</Button>
 						</div>
@@ -42,19 +42,20 @@ import { reactive } from 'vue';
 import { useThemeStore } from '../stores/useThemeStore';
 import { Form, type FormResolverOptions, type FormSubmitEvent } from '@primevue/forms';
 import { Message } from 'primevue';
+import api from '../api/axios';
 
 const store = useThemeStore();
 const toast = useToast();
 
 type LoginFormType = {
-	token : string,
+	turnstileToken : string,
 	loading: boolean,
 	email: string,
 	password : string
 };
 
 const data = reactive<LoginFormType>({
-	token : '',
+	turnstileToken : '',
 	loading : false,
 	email : '',
 	password : ''
@@ -85,7 +86,7 @@ const submitLogin = (event: FormSubmitEvent) : void => {
 		return;
 	}
 
-	if(data.token.trim() === ''){
+	if(data.turnstileToken.trim() === ''){
 		toast.add({
 			severity: 'error',
 			summary: 'Captcha error',
@@ -95,8 +96,20 @@ const submitLogin = (event: FormSubmitEvent) : void => {
 		return ;
 	}
 
+	Login();
 
 }
 
+const Login = async () : Promise<void> => {
+
+	const response = await api.post('/login', {
+		turnstileToken:data.turnstileToken,
+		email : data.email,
+		password: data.password
+	});
+
+	console.log(response);
+
+}
 
 </script>
